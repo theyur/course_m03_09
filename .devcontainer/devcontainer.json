@@ -14,7 +14,7 @@
   "remoteUser": "vscode",
   "mounts": [
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
-    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
+    "source=${localWorkspaceFolder}/.claude-user,target=/home/vscode/.claude,type=bind",
     "source=nuget-packages-${devcontainerId},target=/home/vscode/.nuget/packages,type=volume"
   ],
   "containerEnv": {
