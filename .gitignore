@@ -1,0 +1,33 @@
+# .NET build output and local NuGet packages
+[Bb]in/
+[Oo]bj/
+/packages/
+
+# Rider, ReSharper, and Visual Studio local state
+.idea/
+.vs/
+_ReSharper*/
+*.DotSettings.user
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+riderModule.iml
+
+# Test and coverage output
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Local environment overrides (keep shareable examples)
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+Desktop.ini

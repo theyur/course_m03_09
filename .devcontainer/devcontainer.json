@@ -1,0 +1,14 @@
+{
+  "name": "C# (.NET)",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0-trixie",
+
+  "forwardPorts": [5000],
+
+  "postCreateCommand": "dotnet restore",
+
+  "customizations": {
+    "jetbrains": {
+      "backend": "Rider"
+    }
+  }
+}

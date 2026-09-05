@@ -1,0 +1,6 @@
+@ClaudeCodeProdSetupTest_HostAddress = http://localhost:5039
+
+GET {{ClaudeCodeProdSetupTest_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
