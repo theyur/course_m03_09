@@ -1,14 +1,35 @@
 {
-  "name": "C# (.NET)",
-  "image": "mcr.microsoft.com/devcontainers/dotnet:1-10.0-trixie",
-
-  "forwardPorts": [5000],
-
-  "postCreateCommand": "dotnet restore",
-
-  "customizations": {
-    "jetbrains": {
-      "backend": "Rider"
+  "name": "Claude Code Sandbox - .NET 10 Swagger API",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "TZ": "${localEnv:TZ:Europe/Kyiv}",
+      "CLAUDE_CODE_VERSION": "latest"
     }
-  }
+  },
+  "runArgs": [
+    "--cap-add=NET_ADMIN",
+    "--cap-add=NET_RAW"
+  ],
+  "remoteUser": "vscode",
+  "mounts": [
+    "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
+    "source=claude-code-config-${devcontainerId},target=/home/vscode/.claude,type=volume",
+    "source=nuget-packages-${devcontainerId},target=/home/vscode/.nuget/packages,type=volume"
+  ],
+  "containerEnv": {
+    "CLAUDE_CONFIG_DIR": "/home/vscode/.claude",
+    "ASPNETCORE_URLS": "http://0.0.0.0:5000",
+    "ASPNETCORE_ENVIRONMENT": "Development"
+  },
+  "forwardPorts": [5000],
+  "portsAttributes": {
+    "5000": {
+      "label": "ASP.NET Core / Swagger API"
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspace,type=bind,consistency=delegated",
+  "workspaceFolder": "/workspace",
+  "postStartCommand": "sudo /usr/local/bin/init-firewall.sh",
+  "waitFor": "postStartCommand"
 }
