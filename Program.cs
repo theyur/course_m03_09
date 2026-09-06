@@ -22,10 +22,19 @@ var summaries = new[]
     "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
 
+var cities = new[]
+{
+    "Tokyo", "New York", "London", "Paris", "Berlin",
+    "Madrid", "Rome", "Cairo", "Lagos", "Nairobi",
+    "Mumbai", "Beijing", "Seoul", "Sydney", "Toronto",
+    "Mexico City", "São Paulo", "Buenos Aires", "Dubai", "Singapore"
+};
+
 app.MapGet("/weatherforecast", () =>
     {
         var forecast = Enumerable.Range(1, 5)
             .Select(index => new WeatherForecast(
+                cities[Random.Shared.Next(cities.Length)],
                 DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
                 Random.Shared.Next(-20, 55),
                 summaries[Random.Shared.Next(summaries.Length)]))
@@ -35,9 +44,12 @@ app.MapGet("/weatherforecast", () =>
     })
     .WithName("GetWeatherForecast");
 
+app.MapGet("/cities", () => cities)
+    .WithName("GetCities");
+
 app.Run();
 
-record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
+record WeatherForecast(string City, DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
