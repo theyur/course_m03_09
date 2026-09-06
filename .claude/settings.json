@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [],
+    "defaultMode": "acceptEdits",
+    "disableBypassPermissionsMode": "disable",
+    "deny": [
+      "Read(//home/vscode/.microsoft/usersecrets)",
+      "Read(//home/vscode/.microsoft/usersecrets/**)",
+      "Edit(//home/vscode/.microsoft/usersecrets)",
+      "Edit(//home/vscode/.microsoft/usersecrets/**)",
+      "Read(//home/vscode/.cache/claude-dotnet/.microsoft/usersecrets)",
+      "Read(//home/vscode/.cache/claude-dotnet/.microsoft/usersecrets/**)",
+      "Edit(//home/vscode/.cache/claude-dotnet/.microsoft/usersecrets)",
+      "Edit(//home/vscode/.cache/claude-dotnet/.microsoft/usersecrets/**)",
+      "Read(//root/.microsoft/usersecrets)",
+      "Read(//root/.microsoft/usersecrets/**)",
+      "Edit(//root/.microsoft/usersecrets)",
+      "Edit(//root/.microsoft/usersecrets/**)",
+      "Bash(dotnet user-secrets *)",
+      "Bash(dotnet * user-secrets *)",
+      "Bash(git reset *)",
+      "Bash(git * reset *)",
+      "Bash(git clean *)",
+      "Bash(git * clean *)",
+      "Bash(git restore *)",
+      "Bash(git * restore *)",
+      "Bash(git checkout *)",
+      "Bash(git * checkout *)",
+      "Bash(git rm *)",
+      "Bash(git * rm *)",
+      "Bash(git rebase *)",
+      "Bash(git * rebase *)",
+      "Bash(git push *)",
+      "Bash(git * push *)",
+      "Bash(git branch *-d*)",
+      "Bash(git branch *-D*)",
+      "Bash(git tag *-d*)",
+      "Bash(git stash drop *)",
+      "Bash(git stash clear *)",
+      "Bash(docker rm *)",
+      "Bash(docker * rm *)",
+      "Bash(docker rmi *)",
+      "Bash(docker * rmi *)",
+      "Bash(docker kill *)",
+      "Bash(docker * kill *)",
+      "Bash(docker stop *)",
+      "Bash(docker * stop *)",
+      "Bash(docker prune *)",
+      "Bash(docker * prune *)",
+      "Bash(docker compose *down*)",
+      "Bash(docker-compose *down*)",
+      "Bash(docker-compose *rm*)",
+      "Bash(docker-compose *kill*)",
+      "Bash(docker-compose *stop*)"
+    ]
+  },
+  "sandbox": {
+    "enabled": true,
+    "failIfUnavailable": true,
+    "autoAllowBashIfSandboxed": true,
+    "allowUnsandboxedCommands": false,
+    "excludedCommands": [],
+    "enableWeakerNestedSandbox": false,
+    "network": {
+      "allowedDomains": [
+        "api.anthropic.com",
+        "statsig.anthropic.com",
+        "sentry.io",
+        "api.nuget.org",
+        "www.nuget.org",
+        "globalcdn.nuget.org",
+        "api.github.com",
+        "github.com",
+        "objects.githubusercontent.com",
+        "codeload.github.com",
+        "json-schema.org",
+        "json.schemastore.org",
+        "plugins.jetbrains.com",
+        "downloads.marketplace.jetbrains.com",
+        "download.jetbrains.com",
+        "download-cf.jetbrains.com",
+        "www.jetbrains.com",
+        "localhost",
+        "127.0.0.1"
+      ],
+      "allowAllUnixSockets": true,
+      "allowLocalBinding": true
+    },
+    "filesystem": {
+      "allowWrite": [
+        "/tmp",
+        "/home/vscode/.dotnet",
+        "/home/vscode/.nuget",
+        "/home/vscode/.cache",
+        "/home/vscode/.local/share/NuGet"
+      ],
+      "denyWrite": [
+        "/home/vscode/.microsoft/usersecrets",
+        "/home/vscode/.cache/claude-dotnet/.microsoft/usersecrets",
+        "/root/.microsoft/usersecrets"
+      ],
+      "denyRead": [
+        "/home/vscode/.microsoft/usersecrets",
+        "/home/vscode/.cache/claude-dotnet/.microsoft/usersecrets",
+        "/root/.microsoft/usersecrets"
+      ]
+    }
+  },
+  "env": {
+    "DOTNET_CLI_HOME": "/home/vscode/.cache/claude-dotnet",
+    "NUGET_PACKAGES": "/home/vscode/.nuget/packages",
+    "USEARTIFACTSOUTPUT": "true",
+    "ARTIFACTSPATH": "/home/vscode/.cache/claude-dotnet/artifacts",
+    "ENABLESOURCECONTROLMANAGERQUERIES": "false",
+    "ENABLESOURCELINK": "false"
+  }
+}

@@ -21,9 +21,11 @@ Endpoint requests can be exercised via `ClaudeCodeProdSetupTest.http` (VS Code/R
 ## Architecture
 
 - `Program.cs` — entire app: builder/service registration, middleware pipeline, and endpoint(s) defined with minimal APIs (`app.MapGet(...)`). New endpoints should follow this same top-level-statements, minimal-API style unless the project grows enough to warrant splitting into controllers/services.
-- OpenAPI is registered twice for different purposes: `AddOpenApi()`/`MapOpenApi()` (built-in ASP.NET Core OpenAPI document generation) and `AddSwaggerGen()`/`UseSwagger()`/`UseSwaggerUI()` (Swashbuckle, providing the interactive Swagger UI). Both are gated behind `app.Environment.IsDevelopment()`.
+- OpenAPI is registered twice for different purposes: `AddOpenApi()`/`MapOpenApi()` (built-in ASP.NET Core OpenAPI document generation) and `AddSwaggerGen()`/`UseSwagger()`/`UseSwaggerUI()` (Swashbuckle, providing the interactive Swagger UI). Service registration is unconditional; only the endpoints and UI are gated behind `app.Environment.IsDevelopment()`.
 - Configuration follows standard ASP.NET Core layering: `appsettings.json` + `appsettings.Development.json`, with `ASPNETCORE_ENVIRONMENT` set via `Properties/launchSettings.json` (local run) or the devcontainer's `containerEnv` (container run).
 
 ## Devcontainer
 
 The repo is designed to run inside `.devcontainer/` (see `devcontainer.json`): forwards port 5000, sets `ASPNETCORE_URLS=http://0.0.0.0:5000` and `ASPNETCORE_ENVIRONMENT=Development` in-container, and runs `init-firewall.sh` on start. Claude Code config is bind-mounted from `.claude-user` on the host.
+
+See [.claude/README.md](.claude/README.md) for sandbox permissions and .NET compatibility settings.

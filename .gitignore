@@ -31,3 +31,7 @@ coverage/
 .DS_Store
 Thumbs.db
 Desktop.ini
+
+.claude-user/
+# Personal Claude permission overrides
+.claude/settings.local.json
